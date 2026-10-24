@@ -56,7 +56,6 @@ if uploaded_file:
     # Same column names, same order as training
     new_row = pd.DataFrame([[value1, value2]], columns=[input1, input2])
     prediction = model.predict(new_row)[0]
-    
     st.metric(f"Predicted {target}", f"{prediction:,.0f}")
 
 else:
