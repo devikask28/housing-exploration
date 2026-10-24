@@ -8,7 +8,7 @@ st.title("Housing Price Explorer")
 # The one sentence about the model
 st.write("This model estimates a house's price from two of its features. When it's wrong, a buyer could overpay or a seller could list their home too cheaply.")
 
-# Upload + preview
+# lets the user upload the CSV file and shows a preview
 uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
 
 if uploaded_file:
@@ -23,7 +23,7 @@ if uploaded_file:
     st.subheader("Preview of your data")
     st.dataframe(df.head())
     
-    # Pick a column and a chart type
+    # lets the user choose a column and a chart type (line, scatter, or histogram) and draws that chart
     st.subheader("Chart")
     chart_type = st.radio("Chart type", ["line", "scatter", "histogram"], horizontal=True)
     column = st.selectbox("What do you want to plot? (Column)", numeric_cols)
@@ -39,7 +39,7 @@ if uploaded_file:
       
     st.plotly_chart(fig)
     
-    # Two inputs + a target, fit linear regression, prediction value
+    # lets the user choose two inputs and a target, fits a linear regression, and shows the prediction for values the user types in
     st.subheader("Prediction")
     target = st.selectbox("What do you want to predict", numeric_cols)
     choices = [c for c in numeric_cols if c != target]
