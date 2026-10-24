@@ -43,8 +43,8 @@ if uploaded_file:
     st.subheader("Prediction")
     target = st.selectbox("What do you want to predict", numeric_cols)
     choices = [c for c in numeric_cols if c != target]
-    input1 = st.selectbox("First house feature", choices)
-    input2 = st.selectbox("Second house feature", [c for c in choices if c != input1])
+    input1 = st.selectbox("First thing to base the prediction on", choices)
+    input2 = st.selectbox("Second thing to base the prediction on", [c for c in choices if c != input1])
     
     data = df[[input1, input2, target]].dropna()
     model = LinearRegression()
