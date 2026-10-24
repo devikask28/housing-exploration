@@ -29,12 +29,12 @@ if uploaded_file:
     column = st.selectbox("Column", numeric_cols)
     
     if chart_type == "line":
-        fig = px.line(df, y=column)
+        fig = px.line(df, y=column, labels={"index": "House (ordered from most to least expensive)"}, title=f"{column} for each house")
     elif chart_type == "scatter":
         x_col = st.selectbox("Compare against", numeric_cols, index=1)
-        fig = px.scatter(df, x=x_col, y=column)
+        fig = px.scatter(df, x=x_col, y=column, title=f"{column} vs {x_col}")
     else:
-        fig = px.histogram(df, x=column)
+        fig = px.histogram(df, x=column, title=f"Distribution of {column}")
       
     st.plotly_chart(fig)
     
