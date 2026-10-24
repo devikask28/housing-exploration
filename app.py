@@ -4,8 +4,6 @@ import plotly.express as px
 from sklearn.linear_model import LinearRegression
 
 st.title("Housing Price Explorer")
-
-# The one sentence about the model
 st.write("This model estimates a house's price from two of its features. When it's wrong, a buyer could overpay or a seller could list their home too cheaply.")
 
 # lets the user upload the CSV file and shows a preview
