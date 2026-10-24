@@ -35,6 +35,7 @@ if uploaded_file:
         fig = px.scatter(df, x=x_col, y=column, title=f"{column} vs {x_col}")
     else:
         fig = px.histogram(df, x=column, title=f"Distribution of {column}")
+        fig.update_yaxes(title_text="Number of houses")
       
     st.plotly_chart(fig)
     
