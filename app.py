@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 st.title("Housing Price Explorer")
 
 # The one sentence about the model
-st.write("This model estimates a house's price from two of its features; when it's wrong, a buyer could overpay or a seller could list their home too cheaply.")
+st.write("This model estimates a house's price from two of its features. When it's wrong, a buyer could overpay or a seller could list their home too cheaply.")
 
 # Upload + preview
 uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
