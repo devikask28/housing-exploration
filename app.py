@@ -26,7 +26,7 @@ if uploaded_file:
     # Pick a column and a chart type
     st.subheader("Chart")
     chart_type = st.radio("Chart type", ["line", "scatter", "histogram"], horizontal=True)
-    column = st.selectbox("What do you want to plot?", numeric_cols)
+    column = st.selectbox("What do you want to plot? (Column)", numeric_cols)
     
     if chart_type == "line":
         fig = px.line(df, y=column, labels={"index": "House (ordered from most to least expensive)"}, title=f"{column} for each house")
@@ -43,8 +43,8 @@ if uploaded_file:
     st.subheader("Prediction")
     target = st.selectbox("What do you want to predict", numeric_cols)
     choices = [c for c in numeric_cols if c != target]
-    input1 = st.selectbox("First thing to base the prediction on", choices)
-    input2 = st.selectbox("Second thing to base the prediction on", [c for c in choices if c != input1])
+    input1 = st.selectbox("First thing to base the prediction on (Input 1):", choices)
+    input2 = st.selectbox("Second thing to base the prediction on (Input 2):", [c for c in choices if c != input1])
     
     data = df[[input1, input2, target]].dropna()
     model = LinearRegression()
