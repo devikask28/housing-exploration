@@ -11,7 +11,6 @@ uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-
     numeric_cols = df.select_dtypes(include="number").columns.tolist()
 
     if len(numeric_cols) < 3:
@@ -40,6 +39,7 @@ if uploaded_file:
     # lets the user choose two inputs and a target, fits a linear regression, and shows the prediction for values the user types in
     st.subheader("Prediction")
     target = st.selectbox("What do you want to predict", numeric_cols)
+    
     choices = [c for c in numeric_cols if c != target]
     input1 = st.selectbox("First thing to base the prediction on (Input 1):", choices)
     input2 = st.selectbox("Second thing to base the prediction on (Input 2):", [c for c in choices if c != input1])
@@ -51,6 +51,7 @@ if uploaded_file:
     value1 = st.number_input(input1, value=float(data[input1].mean()))
     value2 = st.number_input(input2, value=float(data[input2].mean()))
     new_row = pd.DataFrame([[value1, value2]], columns=[input1, input2])
+    
     prediction = model.predict(new_row)[0]
     st.metric(f"Predicted {target}", f"{prediction:,.0f}")
 
