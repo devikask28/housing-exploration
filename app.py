@@ -52,8 +52,6 @@ if uploaded_file:
     
     value1 = st.number_input(input1, value=float(data[input1].mean()))
     value2 = st.number_input(input2, value=float(data[input2].mean()))
-    
-    # Same column names, same order as training
     new_row = pd.DataFrame([[value1, value2]], columns=[input1, input2])
     prediction = model.predict(new_row)[0]
     st.metric(f"Predicted {target}", f"{prediction:,.0f}")
