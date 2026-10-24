@@ -20,7 +20,7 @@ if uploaded_file:
         st.error("This file needs at least three numeric columns.")
         st.stop()
         
-    st.subheader("Preview")
+    st.subheader("Preview of your data")
     st.dataframe(df.head())
     
     # Pick a column and a chart type
